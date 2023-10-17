@@ -13,18 +13,19 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import * as z from "zod";
 interface AccountProfileProps {
   user: {
-    id: String;
-    objectId: String;
+    id: string;
+    objectId: string;
     userName: String;
-    bio: String;
-    image: String;
+    bio: string;
+    image: string;
   };
-  btnTitle: String;
+  btnTitle: string;
 }
 
 const AccountProfile = ({ user, btnTitle }: AccountProfileProps) => {
@@ -47,11 +48,23 @@ const AccountProfile = ({ user, btnTitle }: AccountProfileProps) => {
           render={({ field }) => (
             <FormItem className="flex items-center gap-4">
               <FormLabel className="account-form_image-lable">
-                {
-                  field.value?(
-                  <Image src={field.value} width={96} height={96} alt="Profile pic" className=" rounded-full object-center" />):
-                  <Image src="/assets/profile.svg" width={24} height={24} alt="Profile pic" className=" rounded-full object-center" />)
-                }
+                {field.value ? (
+                  <Image
+                    src={field.value}
+                    width={96}
+                    height={96}
+                    alt="Profile pic"
+                    className=" rounded-full object-center"
+                  />
+                ) : (
+                  <Image
+                    src="/assets/profile.svg"
+                    width={24}
+                    height={24}
+                    alt="Profile pic"
+                    className=" rounded-full object-center"
+                  />
+                )}
               </FormLabel>
               <FormControl>
                 <Input placeholder="shadcn" {...field} />
