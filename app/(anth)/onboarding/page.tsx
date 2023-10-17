@@ -6,7 +6,13 @@ import { currentUser } from "@clerk/nextjs";
 const Page = async () => {
   const user = await currentUser();
   const userInfo = {};
-  const userdata = { id: user?.id, objectid: "" };
+  const userdata = {
+    id: user?.id,
+    objectId: userInfo?._id,
+    userName: userInfo?.username || user?.username || "",
+    bio: userInfo?.bio,
+    image: userInfo?.image,
+  };
   return (
     <main className=" max-w-3xl flex flex-col justify-start px-10 py-20 mx-auto">
       <h1 className=" head-text">Onbarding</h1>
@@ -14,7 +20,7 @@ const Page = async () => {
         Create your profile and use threads now
       </p>
       <section className="mt-9 bg-dark-2 p-10">
-        <AccountProfile />
+        <AccountProfile user={userInfo} btnTitle={"countinue....."} />
       </section>
     </main>
   );

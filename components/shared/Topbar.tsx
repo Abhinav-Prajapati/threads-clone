@@ -1,7 +1,13 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
+
+import {
+  UserButton,
+  OrganizationSwitcher,
+  SignOutButton,
+  SignedIn,
+} from "@clerk/nextjs";
 
 const Topbar = () => {
   return (
@@ -27,13 +33,14 @@ const Topbar = () => {
             </SignOutButton>
           </SignedIn>
         </div>
-        <OrganizationSwitcher
+        <UserButton />
+        {/* <OrganizationSwitcher
           appearance={{
             elements: {
               OrganizationSwitcherTrigger: { backgroundColor: "px-4 py-2" },
             },
           }}
-        />
+        /> */}
       </div>
     </nav>
   );
